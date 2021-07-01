@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread('bitmap-nurul.png')
+image = cv2.imread('target/screenshot.png')
 original = image.copy()
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 blurred = cv2.GaussianBlur(gray, (3, 3), 0)
@@ -16,9 +16,9 @@ for c in cnts:
     x,y,w,h = cv2.boundingRect(c)
     cv2.rectangle(image, (x, y), (x + w, y + h), (36,255,12), 2)
     ROI = original[y:y+h, x:x+w]
-    cv2.imwrite("ROI_{}.png".format(image_number), ROI)
+    cv2.imwrite("hasilCetak/ROI_{}.png".format(image_number), ROI)
     image_number += 1
 
-cv2.imshow('thresh', thresh)
-cv2.imshow('image', image)
+# cv2.imshow('thresh', thresh)
+# cv2.imshow('image', image)
 cv2.waitKey(0)
